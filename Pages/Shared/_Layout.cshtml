@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Autocraft Service</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <link href='https://fullcalendar.io/releases/fullcalendar/6.1.0/main.min.css' rel='stylesheet' />
+    <script src='https://fullcalendar.io/releases/fullcalendar/6.1.0/main.min.js'></script>
+
+   
+</head>
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Autocraft Service</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Customers/Index">Clienti</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Repairs/Index">Servicii efectuate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/ServiceAppointments/Index">Programari</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Vehicles/Index">Vehicule</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Autocraft Service</h5>
+                    <ul class="list-unstyled text-small">
+                        <li>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <a asp-area="" asp-page="/About">Despre noi</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                            <a asp-area="" asp-page="/Services">Servicii</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                            <a asp-area="" asp-page="/Contact">Contact</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-user-secret" aria-hidden="true"></i>
+                            <a asp-area="" asp-page="/Privacy">Politica de confidentialitate</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled text-small">
+                        <li>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            Strada Reparatiei nr.88
+                        </li>
+                        <li>Cluj, 557275</li>
+                        <li>
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            Email: info@autocraftservice.com
+                        </li>
+                        <li>
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            Telefon: (0724) 456-7890
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Ne gasiti si pe </h5>
+                    <ul class="list-unstyled text-small">
+                        <li>
+                            <a href="#" aria-hidden="true">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" aria-hidden="true">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" aria-hidden="true">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" aria-hidden="true">
+                                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                LinkedIn
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                &copy; 2024 - Autocraft Service
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

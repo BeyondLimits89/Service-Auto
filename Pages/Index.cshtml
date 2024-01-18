@@ -1,0 +1,83 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "AutoCraft Service";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <button class="btn btn-outline-secondary" id="changeToDayView">Zi</button>
+            <button class="btn btn-outline-secondary" id="changeToWeekView">Saptamana</button>
+            <button class="btn btn-outline-secondary" id="changeToMonthView">Luna</button>
+            <hr />
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="container">
+                <div id='calendar'></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div id="details" class="details-section alert alert-light">
+                <h3 class="alert-light"> Detalii programare</h3>
+                <p id="customerDetails" class="alert-light">Client: </p>
+                <p id="vehicleDetails" class="alert-light">Vehicul: </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var detailsSection = document.getElementById('details');
+        var customerDetails = document.getElementById('customerDetails');
+        var vehicleDetails = document.getElementById('vehicleDetails');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            timeZone: 'local',
+            slotLabelFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false 
+            },
+            displayEventTime: false,
+            initialView: 'timeGridDay',
+            slotMinTime: '07:00:00', 
+            slotMaxTime: '20:00:00',
+            hiddenDays: [0, 6],
+            eventClick: function (info) { },
+            eventMouseEnter: function (mouseEnterInfo) {
+                console.log(mouseEnterInfo.event);
+                detailsSection.style.display = 'block';
+                customerDetails.textContent = 'Client: ' + (mouseEnterInfo.event.extendedProps.customer || 'No customer data');
+                vehicleDetails.textContent = 'Vehicul: ' + (mouseEnterInfo.event.extendedProps.vehicle || 'No vehicle data');
+            },
+            /* eventMouseLeave: function (mouseLeaveInfo) {
+                detailsSection.style.display = 'none';
+            },*/
+            dateClick: function (info) {window.location.href = '/ServiceAppointments/Create?date=' + info.dateStr;},
+            events: '/API/Appointments?handler=Json'
+        });
+        calendar.render();
+
+        document.getElementById('changeToDayView').addEventListener('click', function () {
+            calendar.changeView('timeGridDay');
+        });
+
+        document.getElementById('changeToWeekView').addEventListener('click', function () {
+            calendar.changeView('timeGridWeek');
+        });
+
+        document.getElementById('changeToMonthView').addEventListener('click', function () {
+            calendar.changeView('dayGridMonth');
+        })
+
+    });
+
+</script>
+

@@ -1,0 +1,43 @@
+﻿@page
+@model Service_Auto.Pages.Repairs.DeleteModel
+
+@{
+    ViewData["Title"] = "Sterge";
+}
+
+<h4>Sunteti siguri ca vreti sa stergeti inregistrarea?</h4>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Repair.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repair.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Repair.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repair.Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Repair.Cost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repair.Cost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Repair.Vehicle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repair.Vehicle.LicensePlate) -
+            @Html.DisplayFor(model => model.Repair.Vehicle.Customer.Name)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Repair.ServiceID" />
+        <input type="submit" value="Sterge" class="btn btn-danger" />
+    </form>
+</div>
